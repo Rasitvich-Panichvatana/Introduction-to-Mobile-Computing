@@ -1,0 +1,101 @@
+/* Reset พื้นฐาน */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+/* ใช้ Flex เพื่อดัน footer ลงล่าง */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Sarabun";
+}
+
+/* Header */
+header {
+  background-color: #006895;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 32px;
+}
+
+/* ส่วนเนื้อหา */
+.content {
+  flex: 1; /* ดัน footer ลงล่าง */
+  display: flex;
+  background-color: #eee;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #8ec1b8;
+  width: 180px;
+  padding: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.sidebar button {
+  background-color: #8ec1b8;
+  border: none;
+  font-size: 21px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: #dfdcd3;
+  padding: 5vh 5vw;
+}
+
+.main-content h2 {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  color: #333;
+  font-size: 48px;
+}
+
+.main-content p {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 21px;
+  padding-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  background-color: #0799ba;
+  color: white;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}

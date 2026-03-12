@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 1 & 2</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="bw.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        เครื่องมือสำหรับการพัฒนาเว็บฝั่งผู้ใช้ <br />
+        (Frontend Development Tools)
+      </h1>
+    </header>
+
+    <main class="content">
+      <aside class="sidebar">
+        <ul>
+          <li><button onclick="changeAngular()">Angular.JS</button></li>
+          <li><button onClick="changeVue()">Vue.js</button></li>
+          <li><button onClick="changeBootstrap()">Bootstrap</button></li>
+        </ul>
+      </aside>
+
+      <script>
+        function changeAngular() {
+          const detailTitle = document.getElementById("detail-title");
+          const detailBodyEn = document.getElementById("detail-body-en");
+          const detailBodyTh = document.getElementById("detail-body-th");
+
+          detailTitle.textContent = "Angular.JS";
+          detailBodyEn.textContent =
+            "It is a product of Google and is known as a top front-end development tool. It is an open-source framework that offers data binding, plain JavaScript, controller features. With Angular.JS, Custom web app development services can be provided with reusable components, localization, and directives. Moreover, it also offers built-in testability. The framework is quite easy to use and maintain.";
+          detailBodyTh.textContent =
+            "Angular คือ web framework หรือชุดเครื่องมือสำหรับสร้างเว็บไซต์ที่พัฒนาโดยทีมของบริษัท Google ซึ่งมีเครื่องมือต่างๆ พร้อมใช้งานในตัว นอกจากนี้ยังถือเป็น framework แรกที่ใช้ TypeScript เป็นหลักจึงทำให้โค้ดมีคุณภาพและพัฒนาต่อได้ง่ายขึ้น และเป็น framework ที่ใช้เทคนิค Dependency Injection ที่คล้ายกับในภาษา Java หรือ C# อีกด้วย ใช้ในการพัฒนาเว็บแอปพลิเคชั่นและเว็บไซต์ต่างๆ แต่จะนิยมในองค์กรระดับ enterprise มากกว่า";
+        }
+
+        function changeVue() {
+          const detailTitle = document.getElementById("detail-title");
+          const detailBodyEn = document.getElementById("detail-body-en");
+          const detailBodyTh = document.getElementById("detail-body-th");
+
+          detailTitle.textContent = "Vue.js";
+          detailBodyEn.textContent =
+            "This JavaScript library is used to build web interfaces. Currently, the front-end development tool has around 26.6K rating on GitHub and has left several other tools behind. If you hire front-end developer that uses Vue.js, you can get lightweight, high-quality, and efficient web apps. The best part about Vue is that it is free from pedigree and has less baggage. With Vue.js, it is easier to improve over the errors. Despite being one of the newer development tools, it is becoming widely popular.";
+          detailBodyTh.textContent =
+            "Vue อ่านว่า “วิว” เหมือนกับคำว่า view เลย โดยเป็น “progressive framework” สำหรับสร้าง user interface ซึ่ง progressive ก็คือการที่ Vue.js นั้นใช้เป็นเหมือนส่วนเพิ่มความสามารถที่เอาไปใช้งานกับ HTML ซึ่งชื่อ Vue นั้นก็มีที่มาจากการที่ library นี้จะโฟกัสที่การจัดการในส่วนของ view เท่านั้น เพื่อให้สามารถนำ Vue ไปใช้งานร่วมกับ Library อื่นๆได้สะดวก และยังเหมาะกับการทำ Single-Page Applications (SPA) หรือเว็บที่ไม่ต้องเปลี่ยนหน้าบ่อยๆนั่นเอง";
+        }
+
+        function changeBootstrap() {
+          const detailTitle = document.getElementById("detail-title");
+          const detailBodyEn = document.getElementById("detail-body-en");
+          const detailBodyTh = document.getElementById("detail-body-th");
+
+          detailTitle.textContent = "Bootstrap";
+          detailBodyEn.textContent =
+            "It is a toolkit that allows you to develop apps with CSS, HTML, and JS. The platform is utilized for developing responsive grid systems. Bootstrap has a wide range of pre-built components, templates, and powerful plugins that developers can use for making excellent web projects.";
+          detailBodyTh.textContent =
+            "Bootstrap ถือว่าเป็น framework ที่ถูกออกแบบมาเพื่อให้การพัฒนาเว็บไซต์ของง่ายและมีความสวยงามทันสมัยมากยิ่งขึ้น ด้วย class และ components ที่มีให้เลือกใช้ได้อย่างง่าย เหมาะกับผู้เริ่มต้นในการพัฒนาเว็บไซต์ ในส่วนของการสร้างหน้าเว็บที่มีลักษณะ Responsive นั้น Bootstrap ก็ได้มีเครื่องมือที่กำหนดแต่ละขนาดของหน้าจอไว้เพื่อให้แสดงข้อมูลได้อย่างเหมาะสม ส่วนนี้เรียกว่า Breakpoints ซึ่งเป็นหนึ่งใน Layout ที่มักจะนิยมใช้ในการพัฒนาเว็บไซต์แบบ Responsive แต่ก่อนที่เราจะไปทำความรู้จักกับ Breakpoint ให้เรามาทำความรู้จักกับหน้าเว็บที่เป็น Responsive กันก่อน";
+        }
+      </script>
+
+      <section class="main-content">
+        <h2 id="detail-title">Frontend</h2>
+        <p id="detail-body-en">
+          The frontend is the part of a website or app users directly interact
+          with. It includes the layout, design, and interactive elements,
+          creating a smooth and user-friendly experience. It’s called the
+          client-side because it runs in the user’s browser.
+        </p>
+        <p id="detail-body-th">
+          ความหมายของ front-end สำหรับ developer จะเรียกกันสั้น ๆ ว่า หน้าบ้าน
+          หรือเป็นส่วนติดต่อผู้ใช้ (User interface) ไม่ว่าจะเป็น หน้าโฮม
+          หน้าเว็บเพจ เนื้อหาต่างๆ รูปภาพ ลิงก์ เป็นต้น เป็นส่วนที่ user
+          ทั่วไปสามารถเห็นและเข้ามาใช้งานได้ของเว็บไซต์
+        </p>
+      </section>
+    </main>
+
+    <footer>รหัสนิสิต 6634459423 นายรษิตวิชญ์ พานิชวัฒนา</footer>
+  </body>
+</html>
