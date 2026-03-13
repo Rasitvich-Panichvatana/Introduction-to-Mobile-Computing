@@ -9,7 +9,18 @@
     <br />
     <form>
       <label for="income">รายได้ (บาท)</label><br />
-      <input id="income" name="income" /><br />
+      <input
+        type="number"
+        onkeydown="return event.keyCode !== 69;"
+        id="income"
+        name="income"
+      />
+      <button>+</button>
+      <button>-</button>
+      <br /><br />
+      <input type="number" id="income2" name="income2" /><br /><br />
+      <input type="number" id="income3" name="income3" /><br />
+      <br />
       <label for="total-income">รายได้รวม (บาท)</label><br />
       <input id="total-income" name="total-income" readonly /><br />
       <label for="tax-ratio">อัตราภาษี (%)</label><br />
