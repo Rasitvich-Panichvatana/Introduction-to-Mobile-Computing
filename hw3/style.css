@@ -1,0 +1,9 @@
+#box {
+    background-color: black;
+    color: white;
+    padding: 5%;
+    padding-bottom: 7%;
+    margin: 1%;
+    border-style: solid;
+    border-color: black;
+}
