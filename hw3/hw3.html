@@ -9,7 +9,12 @@
 
     <form>
       <label>รายได้ (บาท)</label><br />
-      <input type="number" id="income" oninput="calculate()" />
+      <input
+        type="number"
+        id="income"
+        oninput="calculate()"
+        onkeydown="return event.keyCode !== 69;"
+      />
       <button type="button" onclick="add()">+</button>
       <button type="button" onclick="remove()">-</button>
       <br /><br />
@@ -19,6 +24,7 @@
         id="income2"
         style="display: none"
         oninput="calculate()"
+        onkeydown="return event.keyCode !== 69;"
       /><br />
 
       <input
@@ -26,6 +32,7 @@
         id="income3"
         style="display: none"
         oninput="calculate()"
+        onkeydown="return event.keyCode !== 69;"
       /><br /><br />
 
       <label>รายได้รวม (บาท)</label><br />
