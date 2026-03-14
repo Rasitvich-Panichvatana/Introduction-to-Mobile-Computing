@@ -17,11 +17,7 @@ function getDate() {
       document.getElementById("date").innerHTML = data.datetime;
     })
     .catch((e) => {
-      if (e.name === "AbortError") {
-        document.getElementById("date").innerHTML = "ระบบเครือข่ายล้มเหลว";
-      } else {
-        document.getElementById("date").innerHTML = e.toString();
-      }
+      document.getElementById("date").innerHTML = "ระบบเครือข่ายล้มเหลว";
     });
 }
 // เรียกทุก 1 วินาที
