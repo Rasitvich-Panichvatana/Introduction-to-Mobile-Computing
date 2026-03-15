@@ -14,7 +14,16 @@ function getDate() {
       }
     })
     .then((data) => {
-      document.getElementById("date").innerHTML = data.datetime;
+      const date = new Date(data.datetime);
+
+      const day = date.getDate();
+      const month = date.toLocaleString("th-TH", { month: "long" });
+      const year = date.getFullYear() + 543;
+      const time = date.toLocaleTimeString("th-TH");
+
+      const thaiDatetime = `วันที่ ${day} ${month} ${year} เวลา ${time} น.`;
+
+      document.getElementById("date").innerHTML = thaiDatetime;
     })
     .catch((e) => {
       document.getElementById("date").innerHTML = "ระบบเครือข่ายล้มเหลว";
