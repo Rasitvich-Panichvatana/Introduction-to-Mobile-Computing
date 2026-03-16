@@ -1,0 +1,29 @@
+.nav{
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ececec;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.nav button{
+    width: 75px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: #ececec;
+    font-size: 13px;
+}
+
+.nav button:hover{
+    background-color: #e2e2e2;
+    border-radius: 0.35rem;
+    border: none;
+    outline: none;
+}
