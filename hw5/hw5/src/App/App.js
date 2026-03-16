@@ -1,21 +1,12 @@
 import "./App.css";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  let navigate = useNavigate();
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => navigate("/credit")}>Credit</button>
+      <button onClick={() => navigate("/")}>Sign out</button>
     </div>
   );
 }
