@@ -1,0 +1,62 @@
+.activity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+}
+
+.content-container {
+  display: flex;
+  gap: 20px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.name, .date {
+  margin: 0;
+  font-size: 16px;
+}
+
+.date {
+    margin-right: 30px;
+}
+
+.edit{
+    width: 75px;
+    height: 36px;
+    outline: none;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: #ececec;
+    font-size: 13px;
+}
+
+.edit:hover{
+    background-color: #e2e2e2;
+    border-radius: 0.35rem;
+    border: none;
+    outline: none;
+}
+
+.remove{
+    width: 75px;
+    height: 36px;
+    outline: none;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: #e11c1c;
+    font-size: 13px;
+    color: white;
+}
+
+.remove:hover{
+    background-color: #d21919;
+    color: white;
+    border-radius: 0.35rem;
+    border: none;
+    outline: none;
+}
