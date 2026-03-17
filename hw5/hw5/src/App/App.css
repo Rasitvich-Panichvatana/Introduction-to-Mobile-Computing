@@ -1,0 +1,40 @@
+body {
+  margin-top: 75px;
+  display: block;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+
+.title{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.add{
+    align-self: flex-end;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: 75px;
+    height: 36px;
+    outline: none;
+    border: none;
+    border-radius: 0.35rem;
+    color: white;
+    background-color: rgb(0, 153, 0);
+    font-size: 13px;
+}
+
+.add:hover{
+    background-color: green;
+    color: white;
+    border-radius: 0.35rem;
+    border: none;
+    outline: none;
+}

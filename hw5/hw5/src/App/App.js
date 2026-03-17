@@ -6,8 +6,11 @@ function App() {
   return (
     <>
       <Nav />
-      <button>Add</button>
-      <Activity />
+      <div className="main">
+        <h2 className="title">กิจกรรม</h2>
+        <button className="add">Add</button>
+        <Activity />
+      </div>
     </>
   );
 }
