@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mac/Desktop/intro mobile/hw4/MyApi/MyApi.csproj": {}
+    "/Users/mac/Desktop/intro mobile/hw4/ToDo/ToDo.csproj": {}
   },
   "projects": {
-    "/Users/mac/Desktop/intro mobile/hw4/MyApi/MyApi.csproj": {
+    "/Users/mac/Desktop/intro mobile/hw4/ToDo/ToDo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/Desktop/intro mobile/hw4/MyApi/MyApi.csproj",
-        "projectName": "MyApi",
-        "projectPath": "/Users/mac/Desktop/intro mobile/hw4/MyApi/MyApi.csproj",
+        "projectUniqueName": "/Users/mac/Desktop/intro mobile/hw4/ToDo/ToDo.csproj",
+        "projectName": "ToDo",
+        "projectPath": "/Users/mac/Desktop/intro mobile/hw4/ToDo/ToDo.csproj",
         "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/Desktop/intro mobile/hw4/MyApi/obj/",
+        "outputPath": "/Users/mac/Desktop/intro mobile/hw4/ToDo/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mac/.nuget/NuGet/NuGet.Config"
@@ -47,10 +47,6 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.5, )"
-            },
-            "MySqlConnector": {
-              "target": "Package",
-              "version": "[2.5.0, )"
             }
           },
           "imports": [
