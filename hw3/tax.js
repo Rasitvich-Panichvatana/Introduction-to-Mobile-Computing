@@ -13,10 +13,14 @@ function add() {
 function remove() {
   if (count == 3) {
     document.getElementById("income3").style.display = "none";
+    document.getElementById("income3").value = 0;
     count--;
+    calculate();
   } else if (count == 2) {
     document.getElementById("income2").style.display = "none";
+    document.getElementById("income2").value = 0;
     count--;
+    calculate();
   }
 }
 
