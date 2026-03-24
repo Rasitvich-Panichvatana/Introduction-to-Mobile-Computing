@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "C9DkOWNh2KLU637YBixUz1CUyfC/r1qfiU0i1wcXbgVCcNwd+aqUhjdWyJvtbOfebGA6nHG2UutjAkrTNH5yPg==",
+  "dgSpecHash": "qOl0+zIhkTBG4iC7MC4zBT2DG3fJ0hSLpYMR+qxFXYR+unByasMynfz0L7OoaIzpQ1g2w+D9Ow+Ny8F8/odl6g==",
   "success": true,
   "projectFilePath": "/Users/mac/Desktop/intro mobile/hw4/ToDo/ToDo.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "/Users/mac/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/Users/mac/.nuget/packages/mysqlconnector/2.1.2/mysqlconnector.2.1.2.nupkg.sha512",
+    "/Users/mac/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/mac/.nuget/packages/pomelo.entityframeworkcore.mysql/6.0.3/pomelo.entityframeworkcore.mysql.6.0.3.nupkg.sha512",
     "/Users/mac/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
