@@ -23,3 +23,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program
+{
+    // random string (length = 32)
+    public static string SecurityKey = "WKVFab9FQhIH1MPVWKVFab9FQhIH1MPV";
+}
