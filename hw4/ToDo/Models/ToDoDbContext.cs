@@ -16,8 +16,8 @@ namespace ToDo.Models
         {
         }
 
-        public virtual DbSet<Activities> Activities { get; set; } = null!;
-        public virtual DbSet<Users> Users { get; set; } = null!;
+        public virtual DbSet<Activity> Activity { get; set; } = null!;
+        public virtual DbSet<User> User { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,42 +33,40 @@ namespace ToDo.Models
             modelBuilder.UseCollation("utf8mb4_general_ci")
                 .HasCharSet("utf8mb4");
 
-            modelBuilder.Entity<Activities>(entity =>
+            modelBuilder.Entity<Activity>(entity =>
             {
-                entity.ToTable("activities");
+                entity.Property(e => e.Id).HasColumnType("int(10)");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
+                entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(100)
-                    .HasColumnName("name");
+                entity.Property(e => e.UserId).HasColumnType("int(10) unsigned zerofill");
 
-                entity.Property(e => e.UserId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("userId");
-
-                entity.Property(e => e.When)
-                    .HasColumnType("datetime")
-                    .HasColumnName("when");
+                entity.Property(e => e.When).HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
-                entity.ToTable("users");
-
                 entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("int(10) unsigned zerofill")
                     .HasColumnName("id");
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(100)
-                    .HasColumnName("password");
+                entity.Property(e => e.FirstName).HasMaxLength(100);
 
-                entity.Property(e => e.Username)
-                    .HasMaxLength(100)
-                    .HasColumnName("username");
+                entity.Property(e => e.HashedPassword)
+                    .HasMaxLength(44)
+                    .IsFixedLength();
+
+                entity.Property(e => e.LastName).HasMaxLength(100);
+
+                entity.Property(e => e.NationalId)
+                    .HasMaxLength(13)
+                    .IsFixedLength();
+
+                entity.Property(e => e.Salt)
+                    .HasMaxLength(24)
+                    .IsFixedLength();
+
+                entity.Property(e => e.Title).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);
