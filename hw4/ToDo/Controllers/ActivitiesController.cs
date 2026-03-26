@@ -70,5 +70,45 @@ namespace ToDo.Controllers
 
             return Ok(activity);
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        [Authorize(Roles = "user")]
+        public IActionResult Put(uint id, [FromBody] DTOs.Activity data)
+        {
+            var db = new ToDoDbContext();
+
+            var activity = (from x in db.Activity
+                            where x.UserId == Convert.ToUInt32(User.Identity.Name) && x.Id == id
+                            select x).FirstOrDefault();
+
+            if (activity == null) return NotFound();
+
+            activity.Name = data.Name;
+            activity.When = data.When;
+
+            db.SaveChanges();
+
+            return ok();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [Authorize(Roles = "user")]
+        public IActionResult Delete(uint id)
+        {
+            var db = new ToDoDbContext();
+
+            var activity = (from x in db.Activity
+                            where x.UserId == Convert.ToUInt32(User.Identity.Name) && x.Id == id
+                            select x).FirstOrDefault();
+
+            if (activity == null) return NotFound();
+
+            db.Activity.Remove(activity);
+            db.SaveChanges();
+
+            return Ok();
+        }
     }
 }
