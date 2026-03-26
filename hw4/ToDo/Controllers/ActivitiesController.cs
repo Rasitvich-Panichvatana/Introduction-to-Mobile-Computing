@@ -31,5 +31,25 @@ namespace ToDo.Controllers
 
             return Ok(new { id = a.Id });
         }
+
+        [HttpGet]
+        [Authorize(Roles = "user")]
+        public IActionResult Get()
+        {
+            var db = new ToDoDbContext();
+
+            var activities = from x in db.Activity
+                             where x.UserID == Convert.ToUInt(User.Identity.Name)
+                             orderby x.When
+                             select new
+                             {
+                                 name = x.Name,
+                                 when = x.When
+                             };
+
+            if (!activities.Any()) return NoContent();
+
+            return Ok(activities);
+        }
     }
 }
