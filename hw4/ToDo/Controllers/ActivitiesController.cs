@@ -51,5 +51,24 @@ namespace ToDo.Controllers
 
             return Ok(activities);
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        [Authorize(Roles = "user")]
+        public IActionResult Get(uint id)
+        {
+            var db = new ToDoDbContext();
+
+            var activity = (from x in db.Activity
+                            where x.UserId == Convert.ToUInt32(User.Identity.Name) && x.Id == id
+                            select new
+                            {
+                                name = x.Name,
+                                when = x.When
+                            }).FirstOrDefault();
+            if (activity == null) return NotFound();
+
+            return Ok(activity);
+        }
     }
 }
