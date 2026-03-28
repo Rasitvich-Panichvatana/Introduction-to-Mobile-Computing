@@ -7,7 +7,7 @@ function App() {
     <>
       <Nav />
       <div className="main">
-        <h2 className="title">กิจกรรม</h2>
+        <h1 className="title">กระดานกิจกรรม</h1>
         <div className="button-container">
           <button className="add">Add</button>
           <button className="edit">Edit</button>
