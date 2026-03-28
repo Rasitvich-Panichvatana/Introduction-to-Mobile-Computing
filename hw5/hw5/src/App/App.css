@@ -18,9 +18,6 @@ body {
 }
 
 .add{
-    align-self: flex-end;
-    margin-right: 20px;
-    margin-bottom: 10px;
     width: 75px;
     height: 36px;
     outline: none;
@@ -33,6 +30,42 @@ body {
 
 .add:hover{
     background-color: green;
+    color: white;
+    border-radius: 0.35rem;
+    border: none;
+    outline: none;
+}
+
+.edit{
+    width: 75px;
+    height: 36px;
+    outline: none;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: #ececec;
+    font-size: 13px;
+}
+
+.edit:hover{
+    background-color: #e2e2e2;
+    border-radius: 0.35rem;
+    border: none;
+    outline: none;
+}
+
+.remove{
+    width: 75px;
+    height: 36px;
+    outline: none;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: #e11c1c;
+    font-size: 13px;
+    color: white;
+}
+
+.remove:hover{
+    background-color: #d21919;
     color: white;
     border-radius: 0.35rem;
     border: none;

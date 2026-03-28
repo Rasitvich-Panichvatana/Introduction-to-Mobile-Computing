@@ -1,5 +1,4 @@
-import Activity from "../components/Activity";
-import ActivityCard from "../components/ActivityCard";
+import SelectActionCard from "../components/SelectActionCard";
 import Nav from "../components/Nav";
 import "./App.css";
 
@@ -9,9 +8,12 @@ function App() {
       <Nav />
       <div className="main">
         <h2 className="title">กิจกรรม</h2>
-        <button className="add">Add</button>
-        <Activity />
-        <ActivityCard />
+        <div className="button-container">
+          <button className="add">Add</button>
+          <button className="edit">Edit</button>
+          <button className="remove">Remove</button>
+        </div>
+        <SelectActionCard />
       </div>
     </>
   );
