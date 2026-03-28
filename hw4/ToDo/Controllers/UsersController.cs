@@ -53,7 +53,7 @@ namespace ToDo.Controllers
 
             if (!users.Any()) return NoContent();
 
-            return Ok(activities);
+            return Ok(users);
         }
     }
 }
