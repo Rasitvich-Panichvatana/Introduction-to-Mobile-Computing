@@ -39,7 +39,7 @@ namespace ToDo.Controllers
             var db = new ToDoDbContext();
 
             var activities = from x in db.Activity
-                             where x.UserID == Convert.ToUInt(User.Identity.Name)
+                             where x.UserId == Convert.ToUInt32(User.Identity.Name)
                              orderby x.When
                              select new
                              {
@@ -89,7 +89,7 @@ namespace ToDo.Controllers
 
             db.SaveChanges();
 
-            return ok();
+            return Ok();
         }
 
         [HttpDelete]
