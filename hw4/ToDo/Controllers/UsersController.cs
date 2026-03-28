@@ -43,12 +43,12 @@ namespace ToDo.Controllers
                         orderby x.NationalId
                         select new
                         {
-                            nationid = x.NationalId,
+                            nationId = x.NationalId,
                             salt = x.Salt,
-                            hashedpassword = x.HashedPassword,
+                            hashedPassword = x.HashedPassword,
                             title = x.Title,
-                            firstname = x.FirstName,
-                            lastname = x.LastName
+                            firstName = x.FirstName,
+                            lastName = x.LastName
                         };
 
             if (!users.Any()) return NoContent();

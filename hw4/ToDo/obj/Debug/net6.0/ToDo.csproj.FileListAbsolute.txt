@@ -35,3 +35,12 @@
 /Users/mac/Desktop/intro mobile/hw4/ToDo/obj/Debug/net6.0/ref/ToDo.dll
 /Users/mac/Desktop/intro mobile/hw4/ToDo/obj/Debug/net6.0/ToDo.pdb
 /Users/mac/Desktop/intro mobile/hw4/ToDo/obj/Debug/net6.0/ToDo.genruntimeconfig.cache
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/Newtonsoft.Json.dll
+/Users/mac/Desktop/intro mobile/hw4/ToDo/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
