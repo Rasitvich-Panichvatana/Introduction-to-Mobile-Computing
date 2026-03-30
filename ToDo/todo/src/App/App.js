@@ -86,7 +86,6 @@ function App() {
               type="datetime-local"
               fullWidth
               margin="normal"
-              InputLabelProps={{ shrink: true }}
               value={when}
               onChange={(e) => setWhen(e.target.value)}
             />
