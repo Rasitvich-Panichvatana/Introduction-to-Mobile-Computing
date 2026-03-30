@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:5555";
 
-// ✅ LOGIN
+// Login
 export const login = async (nationalId, password) => {
   const res = await fetch(`${BASE_URL}/Tokens`, {
     method: "POST",
@@ -17,13 +17,13 @@ export const login = async (nationalId, password) => {
 
   const data = await res.json();
 
-  // 🔐 save token
+  // save token
   localStorage.setItem("token", data.token);
 
   return data;
 };
 
-// ✅ REGISTER
+// Register
 export const register = async (userData) => {
   const res = await fetch(`${BASE_URL}/Users`, {
     method: "POST",
@@ -32,6 +32,11 @@ export const register = async (userData) => {
     },
     body: JSON.stringify(userData),
   });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || "Register failed");
+  }
 
   return await res.json();
 };
