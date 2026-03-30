@@ -43,6 +43,7 @@ namespace ToDo.Controllers
                              orderby x.When
                              select new
                              {
+                                 id = x.Id,
                                  name = x.Name,
                                  when = x.When
                              };
@@ -63,6 +64,7 @@ namespace ToDo.Controllers
                             where x.UserId == Convert.ToUInt32(User.Identity.Name) && x.Id == id
                             select new
                             {
+                                id = x.Id,
                                 name = x.Name,
                                 when = x.When
                             }).FirstOrDefault();

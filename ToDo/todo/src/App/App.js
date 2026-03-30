@@ -1,4 +1,5 @@
 import SelectActionCard from "../components/SelectActionCard";
+import { deleteActivity } from "../services/activityApi";
 import Nav from "../components/Nav";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -16,11 +17,17 @@ import { getActivities } from "../services/activityApi";
 import { createActivity } from "../services/activityApi";
 
 function App() {
+  const [activities, setActivities] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [when, setWhen] = useState("");
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setName("");
+    setWhen("");
+  };
   const handleAdd = async () => {
     try {
       await createActivity({
@@ -42,8 +49,26 @@ function App() {
     }
   };
 
-  const [activities, setActivities] = useState([]);
-  const [selectedCard, setSelectedCard] = useState(null);
+  const handleRemove = async () => {
+    if (!selectedCard) {
+      alert("Please select an activity first");
+      return;
+    }
+
+    try {
+      await deleteActivity(selectedCard.id);
+
+      // refresh list
+      const updated = await getActivities();
+      setActivities(updated);
+
+      // clear selection
+      setSelectedCard(null);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete activity");
+    }
+  };
 
   useEffect(() => {
     getActivities()
@@ -54,14 +79,20 @@ function App() {
   return (
     <>
       <Nav />
-      <div className="main">
+      <div className="main" onClick={() => setSelectedCard(null)}>
         <h1 className="title">กระดานกิจกรรม</h1>
         <div className="button-container">
           <button className="add" onClick={handleOpen}>
             Add
           </button>
           <button className="edit">Edit</button>
-          <button className="remove">Remove</button>
+          <button
+            className="remove"
+            onClick={handleRemove}
+            disabled={!selectedCard}
+          >
+            Remove
+          </button>
         </div>
         <SelectActionCard
           activities={activities}

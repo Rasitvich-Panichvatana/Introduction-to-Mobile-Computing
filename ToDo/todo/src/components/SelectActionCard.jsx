@@ -23,11 +23,11 @@ function SelectActionCard({ activities, selectedCard, setSelectedCard }) {
         gap: 3,
       }}
     >
-      {activities.map((card, index) => (
-        <Card key={index}>
+      {activities.map((card) => (
+        <Card key={card.id}>
           <CardActionArea
-            onClick={() => setSelectedCard(index)}
-            data-active={selectedCard === index ? '' : undefined}
+            onClick={(e) => { e.stopPropagation(); setSelectedCard(card)}}
+            data-active={selectedCard?.id === card.id ? '' : undefined}
             sx={{
               height: '100%',
               '&[data-active]': {
