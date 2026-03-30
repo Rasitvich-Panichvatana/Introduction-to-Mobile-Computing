@@ -13,7 +13,7 @@ body{
 .login-container {
     max-width: 410px;
     margin: 0 auto;
-    margin-top: 22vh;
+    margin-top: 14vh;
     margin-bottom: 50px;
     border-radius: 0.5rem;
     padding: 2rem 1.5rem;
@@ -29,8 +29,8 @@ body{
     border-radius: 0.35rem;
     border: 1px solid #d0d0d0;
     outline: none;
-    transition: 0.2 ease;
-    font-size: 12px;
+    transition: 0.2s ease;
+    font-size: 14px;
 }
 
 .login-input:focus{
@@ -41,12 +41,12 @@ body{
     width: 300px;
     height: 36px;
     margin-top: 0.3rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     outline: none;
     border: none;
     border-radius: 0.35rem;
     background-color: #ececec;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .login-submit:hover{
@@ -60,7 +60,7 @@ body{
     width:fit-content;
     margin: 0 auto;
     color: #909090;
-    font-size: 12px;
+    font-size: 14px;
     cursor: move;
     padding: 0.2rem;
 }

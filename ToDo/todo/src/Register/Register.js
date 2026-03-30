@@ -2,6 +2,7 @@ import "./Register.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { register } from "../services/authApi";
+import TextField from "@mui/material/TextField";
 
 function Register() {
   const navigate = useNavigate();
@@ -30,57 +31,68 @@ function Register() {
   return (
     <div className="register-container">
       <h2>Register</h2>
-      <br />
-
-      <input
-        className="register-input"
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
 
       <br />
+      <div className="register-input-group">
+        <label>Title</label>
+        <input
+          className="register-input"
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
 
-      <input
-        className="register-input"
-        type="text"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
+      <div className="register-input-group">
+        <label>First name</label>
+        <input
+          className="register-input"
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </div>
 
-      <br />
+      <div className="register-input-group">
+        <label>Last Name</label>
+        <input
+          className="register-input"
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </div>
 
-      <input
-        className="register-input"
-        type="text"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
+      <div className="register-input-group">
+        <label>National ID</label>
+        <input
+          className="register-input"
+          type="text"
+          placeholder="National ID"
+          value={nationalId}
+          onChange={(e) => setNationalId(e.target.value)}
+        />
+      </div>
 
-      <br />
+      <div className="register-input-group">
+        <label>Password</label>
+        <input
+          className="register-input"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
 
-      <input
-        className="register-input"
-        type="text"
-        placeholder="National ID"
-        value={nationalId}
-        onChange={(e) => setNationalId(e.target.value)}
-      />
-
-      <br />
-
-      <input
-        className="register-input"
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <br />
+      <p className="warning">
+        {!nationalId || !password || !title || !firstName || !lastName
+          ? "*โปรดกรอกข้อมูลให้ครบทุกช่อง*"
+          : ""}
+      </p>
 
       <button
         className="register-submit"

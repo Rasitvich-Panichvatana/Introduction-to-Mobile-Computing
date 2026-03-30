@@ -1,7 +1,7 @@
 .register-container {
     max-width: 410px;
     margin: 0 auto;
-    margin-top: 22vh;
+    margin-top: 14vh;
     margin-bottom: 50px;
     border-radius: 0.5rem;
     padding: 2rem 1.5rem;
@@ -9,32 +9,52 @@
     text-align: center;
 }
 
+.register-input-group {
+    width: 300px;
+    margin: 0 auto 0 auto;
+    text-align: left;
+}
+
+.register-input-group label {
+    display: block;
+    font-size: 12px;
+    color: #606060;
+    margin-bottom: 0.2rem;
+    margin-left: 2px;
+}
+
+
 .register-input{
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     height: 36px;
     width: 300px;
     padding: 1rem;
     border-radius: 0.35rem;
     border: 1px solid #d0d0d0;
     outline: none;
-    transition: 0.2 ease;
-    font-size: 12px;
+    transition: 0.2s ease;
+    font-size: 14px;
 }
 
 .register-input:focus{
     border-color: #909090;
 }
 
+.register-input:focus::placeholder {
+    opacity: 0;
+}
+
+
 .register-submit{
     width: 300px;
     height: 36px;
     margin-top: 0.3rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     outline: none;
     border: none;
     border-radius: 0.35rem;
     background-color: #ececec;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .register-submit:hover{
@@ -48,11 +68,17 @@
     width:fit-content;
     margin: 0 auto;
     color: #909090;
-    font-size: 12px;
+    font-size: 14px;
     cursor: move;
     padding: 0.2rem;
 }
 
 .register-login:hover{
     color: #303030;
+}
+
+.warning{
+    margin-top: 0.2rem;
+    font-size: 12px;
+    color: #ff2222;
 }
