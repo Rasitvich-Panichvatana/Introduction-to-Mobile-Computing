@@ -1,9 +1,9 @@
 const BASE_URL = "http://localhost:5555/Activities";
 
-// 🔐 Get token
+// Get token
 const getToken = () => localStorage.getItem("token");
 
-// 🔐 Common headers
+// Common headers
 const getHeaders = () => {
   return {
     "Content-Type": "application/json",
@@ -11,7 +11,7 @@ const getHeaders = () => {
   };
 };
 
-// 🛠️ Handle response
+// Handle response
 const handleResponse = async (res) => {
   if (res.status === 204) return [];
 
@@ -23,7 +23,7 @@ const handleResponse = async (res) => {
   return res.json();
 };
 
-// ✅ GET ALL ACTIVITIES
+// GET ALL ACTIVITIES
 export const getActivities = async () => {
   const res = await fetch(BASE_URL, {
     method: "GET",
@@ -33,7 +33,7 @@ export const getActivities = async () => {
   return handleResponse(res);
 };
 
-// ✅ GET ONE ACTIVITY
+// GET ONE ACTIVITY
 export const getActivityById = async (id) => {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: "GET",
@@ -43,7 +43,7 @@ export const getActivityById = async (id) => {
   return handleResponse(res);
 };
 
-// ✅ CREATE ACTIVITY
+// CREATE ACTIVITY
 export const createActivity = async (activity) => {
   const res = await fetch(BASE_URL, {
     method: "POST",
@@ -54,7 +54,7 @@ export const createActivity = async (activity) => {
   return handleResponse(res);
 };
 
-// ✅ UPDATE ACTIVITY
+// UPDATE ACTIVITY
 export const updateActivity = async (id, activity) => {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
@@ -65,7 +65,7 @@ export const updateActivity = async (id, activity) => {
   return handleResponse(res);
 };
 
-// ✅ DELETE ACTIVITY
+// DELETE ACTIVITY
 export const deleteActivity = async (id) => {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: "DELETE",

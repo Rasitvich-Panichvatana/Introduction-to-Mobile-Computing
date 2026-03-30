@@ -25,7 +25,7 @@ function App() {
     try {
       await createActivity({
         name,
-        when,
+        when: when + ":00", //DateTime format
       });
 
       // refresh list

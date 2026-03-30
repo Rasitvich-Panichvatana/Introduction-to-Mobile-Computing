@@ -5,6 +5,15 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
 function SelectActionCard({ activities, selectedCard, setSelectedCard }) {
+  const formatDate = (iso) => {
+  const [date, time] = iso.split("T");
+
+  const [year, month, day] = date.split("-");
+  const [hour, minute] = time.split(":");
+
+  return `${day}/${month}/${year} ${hour}:${minute}`;
+};
+
   return (
     <Box
       sx={{
@@ -42,7 +51,7 @@ function SelectActionCard({ activities, selectedCard, setSelectedCard }) {
               </Typography>
 
               <Typography variant="body2" color="text.secondary">
-                {card.when}
+                {formatDate(card.when)}
               </Typography>
             </CardContent>
           </CardActionArea>
