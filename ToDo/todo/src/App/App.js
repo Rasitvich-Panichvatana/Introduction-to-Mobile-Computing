@@ -50,23 +50,17 @@ function App() {
   };
 
   const handleRemove = async () => {
-    if (!selectedCard) {
-      alert("Please select an activity first");
-      return;
-    }
-
     try {
       await deleteActivity(selectedCard.id);
 
       // refresh list
       const updated = await getActivities();
       setActivities(updated);
-
-      // clear selection
       setSelectedCard(null);
     } catch (err) {
-      console.error(err);
-      alert("Failed to delete activity");
+      const updated = await getActivities();
+      setActivities(updated);
+      setSelectedCard(null);
     }
   };
 
