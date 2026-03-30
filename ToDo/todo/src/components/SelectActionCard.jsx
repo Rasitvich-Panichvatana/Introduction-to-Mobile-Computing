@@ -1,30 +1,10 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
-const cards = [
-  {
-    id: 1,
-    name: 'ส่งการบ้าน Intro mobile',
-    when: '08:00 20-03-2026',
-  },
-  {
-    id: 2,
-    name: 'ส่งการบ้าน Systems Analysis and Design',
-    when: '23:59 16-03-2026.',
-  },
-  {
-    id: 3,
-    name: 'ส่งแบบตอบรับฝึกงาน',
-    when: '23:59 30-04-2026.',
-  },
-];
-
-function SelectActionCard() {
-  const [selectedCard, setSelectedCard] = React.useState(0);
+function SelectActionCard({ activities, selectedCard, setSelectedCard }) {
   return (
     <Box
       sx={{
@@ -34,8 +14,8 @@ function SelectActionCard() {
         gap: 3,
       }}
     >
-      {cards.map((card, index) => (
-        <Card key={card.id}>
+      {activities.map((card, index) => (
+        <Card key={index}>
           <CardActionArea
             onClick={() => setSelectedCard(index)}
             data-active={selectedCard === index ? '' : undefined}
@@ -49,10 +29,18 @@ function SelectActionCard() {
               },
             }}
           >
-            <CardContent   sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between',}}>
-              <Typography variant="h6" component="div">
+            <CardContent
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography variant="h6">
                 {card.name}
               </Typography>
+
               <Typography variant="body2" color="text.secondary">
                 {card.when}
               </Typography>
@@ -63,5 +51,6 @@ function SelectActionCard() {
     </Box>
   );
 }
+
 
 export default SelectActionCard;
