@@ -1,9 +1,9 @@
-import "./Login.css";
+import "./Register.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../services/authApi";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
 
   const [nationalId, setNationalId] = useState("");
@@ -16,17 +16,17 @@ function Login() {
       navigate("/main");
     } catch (err) {
       console.error(err);
-      alert("Login failed");
+      alert("Register failed");
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="register-container">
+      <h2>Register</h2>
       <br />
 
       <input
-        className="login-input"
+        className="register-input"
         type="text"
         placeholder="National ID"
         value={nationalId}
@@ -36,7 +36,7 @@ function Login() {
       <br />
 
       <input
-        className="login-input"
+        className="register-input"
         type="password"
         placeholder="Password"
         value={password}
@@ -45,16 +45,16 @@ function Login() {
 
       <br />
 
-      <button className="login-submit" onClick={handleLogin}>
-        เข้าสู่ระบบ
+      <button className="register-submit" onClick={handleLogin}>
+        สมัครสมาชิก
       </button>
 
       <br />
-      <a className="login-register" onClick={() => navigate("/register")}>
-        สมัครสมาชิก
+      <a className="register-login" onClick={() => navigate("/login")}>
+        เข้าสู่ระบบ
       </a>
     </div>
   );
 }
 
-export default Login;
+export default Register;

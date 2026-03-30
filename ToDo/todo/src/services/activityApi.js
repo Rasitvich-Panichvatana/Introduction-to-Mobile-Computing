@@ -1,4 +1,4 @@
-const BASE_URL = "https://localhost:5001/Activities";
+const BASE_URL = "http://localhost:5555/Activities";
 
 // 🔐 Get token
 const getToken = () => localStorage.getItem("token");
