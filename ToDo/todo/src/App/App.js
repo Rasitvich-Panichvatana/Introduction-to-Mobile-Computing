@@ -13,23 +13,33 @@ import {
   Button,
 } from "@mui/material";
 
-import { getActivities } from "../services/activityApi";
-import { createActivity } from "../services/activityApi";
+import {
+  getActivities,
+  createActivity,
+  updateActivity,
+} from "../services/activityApi";
 
 function App() {
   const [activities, setActivities] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [open, setOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const [name, setName] = useState("");
   const [when, setWhen] = useState("");
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setIsEditMode(false);
+    setOpen(true);
+  };
+
   const handleClose = () => {
     setOpen(false);
     setName("");
     setWhen("");
+    setIsEditMode(false);
   };
   const handleAdd = async () => {
     try {
+      console.log(when);
       await createActivity({
         name,
         when: when + ":00", //DateTime format
@@ -46,6 +56,29 @@ function App() {
     } catch (err) {
       console.error(err);
       alert("Failed to add activity");
+    }
+  };
+
+  const handleEdit = async () => {
+    try {
+      await updateActivity(selectedCard.id, {
+        name,
+        when: when + ":00",
+      });
+
+      const updated = await getActivities();
+      setActivities(updated);
+
+      setOpen(false);
+    } catch (err) {
+      if (err.message?.includes("did not match the expected pattern")) {
+        const updated = await getActivities();
+        setActivities(updated);
+        setOpen(false);
+        return;
+      }
+      console.error(err);
+      alert("Failed to edit activity");
     }
   };
 
@@ -73,15 +106,35 @@ function App() {
   return (
     <>
       <Nav />
-      <div className="main" onClick={() => setSelectedCard(null)}>
+      <div
+        className="main"
+        onClick={() => {
+          if (!open) setSelectedCard(null);
+        }}
+      >
         <h1 className="title">กระดานกิจกรรม</h1>
         <div className="button-container">
           <button className="add" onClick={handleOpen}>
             Add
           </button>
-          <button className="edit" disabled={!selectedCard}>
+          <button
+            className="edit"
+            onClick={(e) => {
+              e.stopPropagation();
+
+              if (!selectedCard) return;
+              setName(selectedCard.name);
+              console.log(selectedCard.when.slice(0, 16));
+              setWhen(selectedCard.when.slice(0, 16));
+
+              setIsEditMode(true);
+              setOpen(true);
+            }}
+            disabled={!selectedCard}
+          >
             Edit
           </button>
+
           <button
             className="remove"
             onClick={handleRemove}
@@ -97,7 +150,9 @@ function App() {
         />
 
         <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Add Activity</DialogTitle>
+          <DialogTitle>
+            {isEditMode ? "Edit Activity" : "Add Activity"}
+          </DialogTitle>
 
           <DialogContent>
             <TextField
@@ -114,14 +169,20 @@ function App() {
               fullWidth
               margin="normal"
               value={when}
-              onChange={(e) => setWhen(e.target.value)}
+              onChange={(e) => {
+                setWhen(e.target.value);
+                console.log(e.target.value);
+              }}
             />
           </DialogContent>
 
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleAdd} variant="contained">
-              Add
+            <Button
+              onClick={isEditMode ? handleEdit : handleAdd}
+              variant="contained"
+            >
+              {isEditMode ? "Save" : "Add"}
             </Button>
           </DialogActions>
         </Dialog>
