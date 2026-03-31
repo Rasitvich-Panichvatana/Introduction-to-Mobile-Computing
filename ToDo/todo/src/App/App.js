@@ -34,7 +34,6 @@ function App() {
   const handleClose = () => {
     setOpen(false);
     setName("");
-    setWhen("");
     setIsEditMode(false);
   };
   const handleAdd = async () => {
@@ -51,7 +50,6 @@ function App() {
 
       // reset form
       setName("");
-      setWhen("");
       setOpen(false);
     } catch (err) {
       console.error(err);
@@ -171,7 +169,9 @@ function App() {
               value={when}
               onChange={(e) => {
                 setWhen(e.target.value);
-                console.log(e.target.value);
+              }}
+              inputLabel={{
+                shrink: true,
               }}
             />
           </DialogContent>
