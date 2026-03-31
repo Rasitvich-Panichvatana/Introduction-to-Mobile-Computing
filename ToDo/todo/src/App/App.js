@@ -79,7 +79,9 @@ function App() {
           <button className="add" onClick={handleOpen}>
             Add
           </button>
-          <button className="edit">Edit</button>
+          <button className="edit" disabled={!selectedCard}>
+            Edit
+          </button>
           <button
             className="remove"
             onClick={handleRemove}

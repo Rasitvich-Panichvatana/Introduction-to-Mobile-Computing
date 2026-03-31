@@ -62,6 +62,10 @@ body {
     outline: none;
 }
 
+.edit:disabled{
+    color: #909090;
+}
+
 .remove{
     margin-right: 10px;
     width: 75px;
@@ -80,4 +84,8 @@ body {
     border-radius: 0.35rem;
     border: none;
     outline: none;
+}
+
+.remove:disabled{
+    background-color: #c0c0c0;
 }
