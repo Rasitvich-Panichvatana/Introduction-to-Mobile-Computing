@@ -18,4 +18,4 @@ Tools: React(JS) + .NET (C#) + Maria DB + Material UI (MUI)
 
 - Activity Board and Credit Page
   - Add / Edit / Remove
-    [Video]()
+    [Video](https://github.com/user-attachments/assets/74516f1a-a453-46a5-ac70-05d147d227a1)
