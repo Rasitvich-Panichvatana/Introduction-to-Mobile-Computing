@@ -3,6 +3,7 @@ import { deleteActivity } from "../services/activityApi";
 import Nav from "../components/Nav";
 import "./App.css";
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 import {
   Dialog,
@@ -12,6 +13,11 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
+
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 import {
   getActivities,
@@ -25,15 +31,18 @@ function App() {
   const [open, setOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [name, setName] = useState("");
-  const [when, setWhen] = useState("");
+  const [when, setWhen] = useState(null);
+
   const handleOpen = () => {
     setIsEditMode(false);
+    setWhen(dayjs());
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
     setName("");
+    setWhen(null);
     setIsEditMode(false);
   };
   const handleAdd = async () => {
@@ -41,7 +50,7 @@ function App() {
       console.log(when);
       await createActivity({
         name,
-        when: when + ":00", //DateTime format
+        when: when ? when.format("YYYY-MM-DDTHH:mm:ss") : null,
       });
 
       // refresh list
@@ -61,7 +70,7 @@ function App() {
     try {
       await updateActivity(selectedCard.id, {
         name,
-        when: when + ":00",
+        when: when ? when.format("YYYY-MM-DDTHH:mm:ss") : null,
       });
 
       const updated = await getActivities();
@@ -122,8 +131,7 @@ function App() {
 
               if (!selectedCard) return;
               setName(selectedCard.name);
-              console.log(selectedCard.when.slice(0, 16));
-              setWhen(selectedCard.when.slice(0, 16));
+              setWhen(dayjs(selectedCard.when));
 
               setIsEditMode(true);
               setOpen(true);
@@ -161,19 +169,17 @@ function App() {
               onChange={(e) => setName(e.target.value)}
             />
 
-            <TextField
-              label="Date & Time"
-              type="datetime-local"
-              fullWidth
-              margin="normal"
-              value={when}
-              onChange={(e) => {
-                setWhen(e.target.value);
-              }}
-              inputLabel={{
-                shrink: true,
-              }}
-            />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={["DateTimePicker"]}>
+                <DateTimePicker
+                  label="Date-Time"
+                  value={when}
+                  onChange={(newValue) => {
+                    setWhen(newValue);
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
           </DialogContent>
 
           <DialogActions>
