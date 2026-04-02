@@ -18,3 +18,4 @@ Tools: React(JS) + .NET (C#) + Maria DB + Material UI (MUI)
 
 - Activity Board and Credit Page
   - Add / Edit / Remove
+    [Video]()
