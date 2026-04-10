@@ -62,7 +62,7 @@ export default function Login() {
         style={styles.btnRegister}
         onPress={() => router.replace("/register")}
       >
-        <Text style={styles.btnRegisterText}>Create an account</Text>
+        <Text style={styles.btnRegisterText}>Create new account</Text>
       </Pressable>
     </View>
   );
