@@ -71,7 +71,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: "white",
-    paddingVertical: 20,
+    paddingVertical: 100,
     paddingHorizontal: 28,
     flex: 1,
   },

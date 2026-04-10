@@ -16,6 +16,10 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarButton: HapticTab,
+        tabBarStyle: {
+          paddingTop: 8,
+          height: 80,
+        },
       }}
     >
       <Tabs.Screen
@@ -33,6 +37,19 @@ export default function TabLayout() {
           title: "Credit",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="c.circle.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="user"
+        options={{
+          title: "User",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol
+              size={28}
+              name="person.crop.circle.fill"
+              color={color}
+            />
           ),
         }}
       />
