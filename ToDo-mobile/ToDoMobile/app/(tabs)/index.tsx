@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: "bold",
     textAlign: "center",
     marginVertical: 16,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    gap: 10,
+    gap: 12,
     marginBottom: 10,
     marginRight: 16,
   },
