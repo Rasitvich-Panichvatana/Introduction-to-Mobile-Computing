@@ -15,7 +15,6 @@ const user = () => {
 
   return (
     <View style={styles.main}>
-      <Text>user</Text>
       <Pressable style={styles.btnSignOut} onPress={handleSignOut}>
         <Text style={styles.btnSignOutText}>Sign Out</Text>
       </Pressable>
@@ -27,11 +26,20 @@ export default user;
 
 const styles = StyleSheet.create({
   main: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 40,
     paddingVertical: 100,
   },
-  btnSignOut: {},
+  btnSignOut: {
+    backgroundColor: "white",
+    alignSelf: "flex-end",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    borderRadius: 8,
+    borderColor: "white",
+  },
   btnSignOutText: {
     textAlign: "center",
+    fontSize: 16,
   },
 });
