@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, View } from "react-native";
 import React from "react";
 import { Text, Card } from "@rneui/themed";
-import { Activity } from "@/app/(tabs)";
+import { Activity } from "@/lib/api/activityApi";
 
 interface CardProps {
   activity: Activity;
@@ -10,11 +10,19 @@ interface CardProps {
 }
 
 const ToDoCard = ({ activity, isSelected, onSelect }: CardProps) => {
+  const formattedDateTime = new Date(activity.when).toLocaleString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
   return (
     <Pressable onPress={onSelect}>
       <Card containerStyle={[styles.card, isSelected && styles.selectedCard]}>
         <Text h4>{activity.name}</Text>
-        <Text>{activity.when}</Text>
+        <Text>{formattedDateTime}</Text>
       </Card>
     </Pressable>
   );

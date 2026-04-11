@@ -3,15 +3,9 @@ import React, { useEffect, useState } from "react";
 import Animated from "react-native-reanimated";
 import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
-import { getActivities } from "@/lib/api/activityApi";
+import { Activity, getActivities } from "@/lib/api/activityApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const { ScrollView } = Animated;
-
-export interface Activity {
-  id: string;
-  name: string;
-  when: string;
-}
 
 const HomeScreen = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
