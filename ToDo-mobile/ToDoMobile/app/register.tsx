@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  Alert,
+} from "react-native";
 import { router } from "expo-router";
 import { useState } from "react";
 import { register } from "@/lib/api/authApi";
@@ -10,14 +17,40 @@ export default function Register() {
   const [nationalId, setNationalId] = useState("");
   const [password, setPassword] = useState("");
   const [focusedInput, setFocusedInput] = useState("");
+  const [nationalIdError, setNationalIdError] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const isFormValid =
+    !nationalIdError &&
+    title &&
+    firstName &&
+    lastName &&
+    nationalId &&
+    password;
 
   const handleRegister = async () => {
+    if (loading) return;
+
     try {
+      setLoading(true);
+
       await register({ title, firstName, lastName, nationalId, password });
-      alert("Register successful");
-    } catch (err) {
+
+      Alert.alert("Register successful", "Do you want to go to login?", [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Go to Login",
+          onPress: () => router.replace("/login"),
+        },
+      ]);
+    } catch (err: any) {
       console.error(err);
-      alert("Register failed");
+      Alert.alert("Error", err.message || "Register failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,16 +97,34 @@ export default function Register() {
         onFocus={() => setFocusedInput("lastName")}
         onBlur={() => setFocusedInput("")}
       />
-      <Text style={styles.inputLabel}>National ID</Text>
+      <Text style={{ marginTop: 14 }}>
+        <Text style={[styles.inputLabel]}>National ID </Text>
+        <Text style={{ color: "red", fontSize: 13 }}>
+          {nationalIdError && " **"}
+          {nationalIdError || " "}
+        </Text>
+      </Text>
       <TextInput
         placeholder="National ID"
         value={nationalId}
-        onChangeText={setNationalId}
+        onChangeText={(text) => {
+          setNationalId(text);
+          if (text.length === 0) {
+            setNationalIdError("");
+          } else if (!/^\d+$/.test(text)) {
+            setNationalIdError("Only numbers allowed");
+          } else if (text.length !== 13) {
+            setNationalIdError("National ID must be 13 digits");
+          } else {
+            setNationalIdError("");
+          }
+        }}
         keyboardType="number-pad"
         maxLength={13}
         style={[
           styles.input,
           focusedInput === "nationalId" && styles.inputFocused,
+          nationalIdError && { borderColor: "red" },
         ]}
         onFocus={() => setFocusedInput("nationalId")}
         onBlur={() => setFocusedInput("")}
@@ -95,7 +146,14 @@ export default function Register() {
         onBlur={() => setFocusedInput("")}
       />
 
-      <Pressable style={styles.btnRegister} onPress={handleRegister}>
+      <Pressable
+        style={[
+          styles.btnRegister,
+          (!isFormValid || loading) && styles.btnRegisterDisable,
+        ]}
+        onPress={handleRegister}
+        disabled={!isFormValid || loading}
+      >
         <Text style={styles.btnRegisterText}>Create an account</Text>
       </Pressable>
 
@@ -130,11 +188,12 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 14,
+    marginTop: 14,
   },
   input: {
     height: 40,
     marginTop: 6,
-    marginBottom: 16,
+    marginBottom: 4,
     borderWidth: 1,
     borderRadius: 6,
     borderColor: "#d0d0d0",
@@ -157,6 +216,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     color: "white",
+  },
+  btnRegisterDisable: {
+    backgroundColor: "#ccc",
+    borderColor: "#ccc",
   },
   btnLogin: {
     alignSelf: "center",

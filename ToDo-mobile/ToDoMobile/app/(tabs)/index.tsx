@@ -5,7 +5,6 @@ import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { getActivities } from "@/lib/api/activityApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
 const { ScrollView } = Animated;
 
 export interface Activity {
