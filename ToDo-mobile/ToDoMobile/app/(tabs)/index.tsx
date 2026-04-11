@@ -1,9 +1,11 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Animated from "react-native-reanimated";
 import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
-
+import { getActivities } from "@/lib/api/activityApi";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 const { ScrollView } = Animated;
 
 export interface Activity {
@@ -13,21 +15,32 @@ export interface Activity {
 }
 
 const HomeScreen = () => {
-  const [activities, setActivities] = useState<Activity[]>([
-    { id: "1", name: "Morning Run", when: "2025-01-01" },
-    { id: "2", name: "Team Meeting", when: "2025-01-02" },
-    { id: "3", name: "Grocery Shopping", when: "2025-01-03" },
-  ]);
+  const [activities, setActivities] = useState<Activity[]>([]);
   const [selectedCard, setSelectedCard] = useState<Activity | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
-  const [when, setWhen] = useState<string | null>(null);
+  const [when, setWhen] = useState<string>("");
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
 
   const handleDeselect = () => {
     if (!open) setSelectedCard(null);
   };
+
+  const fetchActivities = async () => {
+    const token = await AsyncStorage.getItem("token");
+    if (!token) return;
+    try {
+      const data = await getActivities();
+      setActivities(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchActivities();
+  }, []);
 
   return (
     <Pressable style={styles.main} onPress={handleDeselect}>

@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const BASE_URL = "http://localhost:5555";
+const BASE_URL = "http://localhost:5555/Activities";
 
 // Get token
 const getToken = async () => {
@@ -20,6 +20,10 @@ const getHeaders = async () => {
 // Handle response
 const handleResponse = async (res: Response) => {
   if (res.status === 204) return [];
+
+  if (res.status === 401) {
+    return;
+  }
 
   if (!res.ok) {
     const text = await res.text();

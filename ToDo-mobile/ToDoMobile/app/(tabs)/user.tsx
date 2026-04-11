@@ -7,7 +7,6 @@ const user = () => {
   const handleSignOut = async () => {
     try {
       await AsyncStorage.removeItem("token");
-
       router.replace("/login");
     } catch (err) {
       console.error("Logout failed", err);
