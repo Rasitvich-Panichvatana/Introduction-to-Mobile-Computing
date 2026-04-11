@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 16,
-    marginBottom: 24,
+    marginBottom: 16,
     color: "#222",
   },
   inputLabel: {
@@ -205,7 +205,8 @@ const styles = StyleSheet.create({
     color: "#222",
   },
   btnRegister: {
-    marginVertical: 16,
+    marginTop: 28,
+    marginBottom: 16,
     backgroundColor: "#0a7ea4",
     paddingVertical: 12,
     borderWidth: 1,
