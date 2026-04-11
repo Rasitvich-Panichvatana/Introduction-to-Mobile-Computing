@@ -100,7 +100,7 @@ export default function Register() {
       <Text style={{ marginTop: 14 }}>
         <Text style={[styles.inputLabel]}>National ID </Text>
         <Text style={{ color: "red", fontSize: 13 }}>
-          {nationalIdError && " **"}
+          {nationalIdError && "  *"}
           {nationalIdError || " "}
         </Text>
       </Text>

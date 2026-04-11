@@ -7,6 +7,7 @@ export default function Login() {
   const [nationalId, setNationalId] = useState("");
   const [password, setPassword] = useState("");
   const [focusedInput, setFocusedInput] = useState("");
+  const [nationalIdError, setNationalIdError] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -23,16 +24,34 @@ export default function Login() {
     <View style={styles.main}>
       <Text style={styles.title}>Login</Text>
 
-      <Text style={styles.inputLabel}>National ID</Text>
+      <Text>
+        <Text style={[styles.inputLabel]}>National ID </Text>
+        <Text style={{ color: "red", fontSize: 13 }}>
+          {nationalIdError && "  *"}
+          {nationalIdError || " "}
+        </Text>
+      </Text>
       <TextInput
         placeholder="National ID"
         value={nationalId}
-        onChangeText={setNationalId}
+        onChangeText={(text) => {
+          setNationalId(text);
+          if (text.length === 0) {
+            setNationalIdError("");
+          } else if (!/^\d+$/.test(text)) {
+            setNationalIdError("Only numbers allowed");
+          } else if (text.length !== 13) {
+            setNationalIdError("National ID must be 13 digits");
+          } else {
+            setNationalIdError("");
+          }
+        }}
         keyboardType="number-pad"
         maxLength={13}
         style={[
           styles.input,
           focusedInput === "nationalId" && styles.inputFocused,
+          nationalIdError && { borderColor: "red" },
         ]}
         onFocus={() => setFocusedInput("nationalId")}
         onBlur={() => setFocusedInput("")}
@@ -54,7 +73,14 @@ export default function Login() {
         onBlur={() => setFocusedInput("")}
       />
 
-      <Pressable style={styles.btnLogin} onPress={handleLogin}>
+      <Pressable
+        style={[
+          styles.btnLogin,
+          (nationalIdError || nationalId === "") && styles.btnLoginDisable,
+        ]}
+        onPress={handleLogin}
+        disabled={Boolean(nationalIdError)}
+      >
         <Text style={styles.btnLoginText}>Login</Text>
       </Pressable>
 
@@ -112,6 +138,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     color: "white",
+  },
+  btnLoginDisable: {
+    backgroundColor: "#ccc",
+    borderColor: "#ccc",
   },
   btnRegister: {
     alignSelf: "center",
