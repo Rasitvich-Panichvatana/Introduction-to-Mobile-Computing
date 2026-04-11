@@ -31,7 +31,7 @@ export default function Login() {
         keyboardType="number-pad"
         maxLength={13}
         style={[
-          styles.loginInput,
+          styles.input,
           focusedInput === "nationalId" && styles.inputFocused,
         ]}
         onFocus={() => setFocusedInput("nationalId")}
@@ -47,7 +47,7 @@ export default function Login() {
         secureTextEntry={true}
         autoCorrect={false}
         style={[
-          styles.loginInput,
+          styles.input,
           focusedInput === "password" && styles.inputFocused,
         ]}
         onFocus={() => setFocusedInput("password")}
@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 56,
     marginBottom: 42,
-    color: "#222",
+    color: "#000",
   },
   inputLabel: {
     fontSize: 14,
   },
-  loginInput: {
+  input: {
     height: 40,
     marginTop: 6,
     marginBottom: 16,
@@ -96,8 +96,8 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   inputFocused: {
-    borderColor: "#101010",
-    color: "#101010",
+    borderColor: "#222",
+    color: "#222",
   },
 
   btnLogin: {

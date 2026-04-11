@@ -8,11 +8,11 @@ interface LoginRequest {
 }
 
 interface UserData {
-  nationalId: string;
-  password: string;
   title: string;
   firstName: string;
   lastName: string;
+  nationalId: string;
+  password: string;
 }
 
 // Login
