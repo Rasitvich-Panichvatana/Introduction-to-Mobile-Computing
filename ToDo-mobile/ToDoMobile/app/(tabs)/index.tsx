@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Animated from "react-native-reanimated";
 import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
-import { Activity, getActivities } from "@/lib/api/activityApi";
+import { Activity, deleteActivity, getActivities } from "@/lib/api/activityApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const { ScrollView } = Animated;
 
@@ -28,6 +28,18 @@ const HomeScreen = () => {
       setActivities(data);
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!selectedCard) return;
+
+    try {
+      await deleteActivity(selectedCard.id);
+      setSelectedCard(null);
+      fetchActivities();
+    } catch (err) {
+      alert("Could not delete activity");
     }
   };
 
@@ -59,6 +71,7 @@ const HomeScreen = () => {
         <Pressable
           style={[styles.btnRemove, !selectedCard && styles.btnDisabled]}
           disabled={!selectedCard}
+          onPress={handleDelete}
         >
           <IconSymbol name="trash" color="white" />
         </Pressable>
