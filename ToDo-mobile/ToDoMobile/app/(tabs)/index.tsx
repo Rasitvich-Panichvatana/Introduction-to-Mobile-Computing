@@ -5,6 +5,7 @@ import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Activity, deleteActivity, getActivities } from "@/lib/api/activityApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 const { ScrollView } = Animated;
 
 const HomeScreen = () => {
@@ -22,7 +23,10 @@ const HomeScreen = () => {
 
   const fetchActivities = async () => {
     const token = await AsyncStorage.getItem("token");
-    if (!token) return;
+    if (!token) {
+      router.replace("/login");
+      return;
+    }
     try {
       const data = await getActivities();
       setActivities(data);

@@ -28,7 +28,7 @@ const handleResponse = async (res: Response) => {
   if (res.status === 204) return [];
 
   if (res.status === 401) {
-    return;
+    return [];
   }
 
   if (!res.ok) {

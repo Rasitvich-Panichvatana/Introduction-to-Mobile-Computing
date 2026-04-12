@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import { DatePicker } from "./nativewindui/DatePicker";
 
 const ModalActivity = () => {
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [when, setWhen] = useState<string>("");
   const [date, setDate] = useState(new Date());
@@ -20,10 +20,10 @@ const ModalActivity = () => {
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
+        visible={open}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
+          setOpen(!open);
         }}
       >
         <View style={styles.centeredView}>
@@ -45,10 +45,7 @@ const ModalActivity = () => {
               }}
             />
             <View style={styles.btnContainer}>
-              <Pressable
-                style={styles.btnClose}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
+              <Pressable style={styles.btnClose} onPress={() => setOpen(!open)}>
                 <Text style={styles.btnCloseText}>Close</Text>
               </Pressable>
               <Pressable style={styles.btnSave}>
@@ -58,10 +55,7 @@ const ModalActivity = () => {
           </View>
         </View>
       </Modal>
-      <Pressable
-        style={styles.buttonOpen}
-        onPress={() => setModalVisible(true)}
-      >
+      <Pressable style={styles.buttonOpen} onPress={() => setOpen(true)}>
         <Text style={styles.textStyle}>Show Modal</Text>
       </Pressable>
     </View>
