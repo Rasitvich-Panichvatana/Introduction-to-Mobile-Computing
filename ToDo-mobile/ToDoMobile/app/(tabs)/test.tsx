@@ -1,6 +1,6 @@
-import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
-import ModalDateTime from "@/components/modalDateTime";
+import { View } from "react-native";
+import React from "react";
+import ModalDateTime from "@/components/modalActivity";
 
 const Test = () => {
   return (

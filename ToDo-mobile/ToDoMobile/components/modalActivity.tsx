@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { DatePicker } from "./nativewindui/DatePicker";
 
-const ModalDateTime = () => {
+const ModalActivity = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [when, setWhen] = useState<string>("");
@@ -68,7 +68,7 @@ const ModalDateTime = () => {
   );
 };
 
-export default ModalDateTime;
+export default ModalActivity;
 
 const styles = StyleSheet.create({
   buttonOpen: {
