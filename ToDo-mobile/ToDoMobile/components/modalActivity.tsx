@@ -10,10 +10,23 @@ import {
 import React, { useState } from "react";
 import { DatePicker } from "./nativewindui/DatePicker";
 
-const ModalActivity = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
-  const [when, setWhen] = useState<string>("");
+interface ModalProps {
+  name: string;
+  setName: (value: string) => void;
+  when: string;
+  setWhen: (value: string) => void;
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
+
+const ModalActivity = ({
+  name,
+  setName,
+  when,
+  setWhen,
+  open,
+  setOpen,
+}: ModalProps) => {
   const [date, setDate] = useState(new Date());
   return (
     <View>
@@ -23,7 +36,7 @@ const ModalActivity = () => {
         visible={open}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
-          setOpen(!open);
+          setOpen(false);
         }}
       >
         <View style={styles.centeredView}>
@@ -45,7 +58,7 @@ const ModalActivity = () => {
               }}
             />
             <View style={styles.btnContainer}>
-              <Pressable style={styles.btnClose} onPress={() => setOpen(!open)}>
+              <Pressable style={styles.btnClose} onPress={() => setOpen(false)}>
                 <Text style={styles.btnCloseText}>Close</Text>
               </Pressable>
               <Pressable style={styles.btnSave}>
