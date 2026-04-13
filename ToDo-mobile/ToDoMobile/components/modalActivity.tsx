@@ -96,7 +96,6 @@ const ModalActivity = ({
                   const newWhen = formatLocalDateTime(date);
 
                   setWhen(newWhen);
-                  console.log({ newWhen });
                   handleSave(newWhen);
                 }}
               >
