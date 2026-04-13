@@ -64,7 +64,10 @@ export const getActivityById = async (id: number) => {
 };
 
 // CREATE ACTIVITY
-export const createActivity = async (activity: Activity) => {
+export const createActivity = async (activity: {
+  name: string;
+  when: string;
+}) => {
   const headers = await getHeaders();
   const res = await fetch(BASE_URL, {
     method: "POST",

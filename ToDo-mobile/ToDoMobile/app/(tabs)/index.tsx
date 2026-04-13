@@ -5,6 +5,7 @@ import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import {
   Activity,
+  createActivity,
   deleteActivity,
   getActivities,
   updateActivity,
@@ -38,6 +39,23 @@ const HomeScreen = () => {
       setActivities(data);
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleAdd = async (newWhen: string) => {
+    try {
+      await createActivity({
+        name,
+        when: newWhen,
+      });
+
+      setOpen(false);
+      setSelectedCard(null);
+
+      fetchActivities();
+    } catch (err) {
+      console.error(err);
+      alert("Could not add activity");
     }
   };
 
@@ -83,7 +101,16 @@ const HomeScreen = () => {
       <Text style={styles.title}>Activity Board</Text>
 
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.btnAdd}>
+        <Pressable
+          style={styles.btnAdd}
+          onPress={() => {
+            setName("");
+            setWhen("");
+            setDate(new Date());
+            setIsEditMode(false);
+            setOpen(true);
+          }}
+        >
           <IconSymbol name="plus" color="white" />
         </Pressable>
         <Pressable
@@ -117,7 +144,7 @@ const HomeScreen = () => {
         setOpen={setOpen}
         date={date}
         setDate={setDate}
-        handleSave={handleEdit}
+        handleSave={isEditMode ? handleEdit : handleAdd}
       />
 
       <ScrollView style={{ flex: 1 }}>
