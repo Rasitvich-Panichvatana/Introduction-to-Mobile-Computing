@@ -19,7 +19,7 @@ interface ModalProps {
   setOpen: (value: boolean) => void;
   date: Date;
   setDate: (value: Date) => void;
-  handleSave: () => void;
+  handleSave: (when: string) => void;
 }
 
 const ModalActivity = ({
@@ -38,6 +38,24 @@ const ModalActivity = ({
       setDate(new Date(when));
     }
   }, [when]);
+
+  const formatLocalDateTime = (date: Date) => {
+    const pad = (n: number) => n.toString().padStart(2, "0");
+
+    return (
+      date.getFullYear() +
+      "-" +
+      pad(date.getMonth() + 1) +
+      "-" +
+      pad(date.getDate()) +
+      "T" +
+      pad(date.getHours()) +
+      ":" +
+      pad(date.getMinutes()) +
+      ":" +
+      pad(date.getSeconds())
+    );
+  };
 
   return (
     <View>
@@ -75,8 +93,11 @@ const ModalActivity = ({
               <Pressable
                 style={styles.btnSave}
                 onPress={() => {
-                  setWhen(date.toISOString());
-                  handleSave();
+                  const newWhen = formatLocalDateTime(date);
+
+                  setWhen(newWhen);
+                  console.log({ newWhen });
+                  handleSave(newWhen);
                 }}
               >
                 <Text style={styles.textStyle}>Save</Text>

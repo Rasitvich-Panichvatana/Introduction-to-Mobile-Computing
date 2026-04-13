@@ -41,13 +41,13 @@ const HomeScreen = () => {
     }
   };
 
-  const handleEdit = async () => {
+  const handleEdit = async (newWhen: string) => {
     if (!selectedCard) return;
 
     try {
       await updateActivity(selectedCard.id, {
         name,
-        when,
+        when: newWhen,
       });
 
       setOpen(false);

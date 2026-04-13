@@ -91,7 +91,7 @@ namespace ToDo.Controllers
 
             db.SaveChanges();
 
-            return Ok();
+            return Ok(new { success = true });
         }
 
         [HttpDelete]
@@ -110,7 +110,8 @@ namespace ToDo.Controllers
             db.Activity.Remove(activity);
             db.SaveChanges();
 
-            return Ok();
+            return Ok(new { success = true });
+
         }
     }
 }
