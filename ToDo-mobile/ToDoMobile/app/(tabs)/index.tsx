@@ -11,6 +11,7 @@ import {
 } from "@/lib/api/activityApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
+import ModalActivity from "@/components/modalActivity";
 const { ScrollView } = Animated;
 
 const HomeScreen = () => {
@@ -106,6 +107,18 @@ const HomeScreen = () => {
           <IconSymbol name="trash" color="white" />
         </Pressable>
       </View>
+
+      <ModalActivity
+        name={name}
+        setName={setName}
+        when={when}
+        setWhen={setWhen}
+        open={open}
+        setOpen={setOpen}
+        date={date}
+        setDate={setDate}
+        handleSave={handleEdit}
+      />
 
       <ScrollView style={{ flex: 1 }}>
         {activities.map((activity) => (
