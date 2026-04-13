@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import Animated from "react-native-reanimated";
 import ToDoCard from "@/components/todo-card";
 import { IconSymbol } from "@/components/ui/icon-symbol";
-import { Activity, deleteActivity, getActivities } from "@/lib/api/activityApi";
+import {
+  Activity,
+  deleteActivity,
+  getActivities,
+  updateActivity,
+} from "@/lib/api/activityApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 const { ScrollView } = Animated;
@@ -15,7 +20,7 @@ const HomeScreen = () => {
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [when, setWhen] = useState<string>("");
-  const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+  const [date, setDate] = useState(new Date());
 
   const handleDeselect = () => {
     if (!open) setSelectedCard(null);
@@ -35,6 +40,26 @@ const HomeScreen = () => {
     }
   };
 
+  const handleEdit = async () => {
+    if (!selectedCard) return;
+
+    try {
+      await updateActivity(selectedCard.id, {
+        name,
+        when,
+      });
+
+      setOpen(false);
+      setIsEditMode(false);
+      setSelectedCard(null);
+
+      fetchActivities();
+    } catch (err) {
+      console.error(err);
+      alert("Could not update activity");
+    }
+  };
+
   const handleDelete = async () => {
     if (!selectedCard) return;
 
@@ -43,6 +68,7 @@ const HomeScreen = () => {
       setSelectedCard(null);
       fetchActivities();
     } catch (err) {
+      console.error(err);
       alert("Could not delete activity");
     }
   };

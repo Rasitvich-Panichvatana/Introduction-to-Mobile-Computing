@@ -7,7 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DatePicker } from "./nativewindui/DatePicker";
 
 interface ModalProps {
@@ -17,6 +17,8 @@ interface ModalProps {
   setWhen: (value: string) => void;
   open: boolean;
   setOpen: (value: boolean) => void;
+  date: Date;
+  setDate: (value: Date) => void;
 }
 
 const ModalActivity = ({
@@ -26,8 +28,15 @@ const ModalActivity = ({
   setWhen,
   open,
   setOpen,
+  date,
+  setDate,
 }: ModalProps) => {
-  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    if (when) {
+      setDate(new Date(when));
+    }
+  }, [when]);
+
   return (
     <View>
       <Modal
@@ -53,7 +62,7 @@ const ModalActivity = ({
             <DatePicker
               value={date}
               mode="datetime"
-              onChange={(ev) => {
+              onChange={(ev: any) => {
                 setDate(new Date(ev.nativeEvent.timestamp));
               }}
             />
@@ -61,7 +70,14 @@ const ModalActivity = ({
               <Pressable style={styles.btnClose} onPress={() => setOpen(false)}>
                 <Text style={styles.btnCloseText}>Close</Text>
               </Pressable>
-              <Pressable style={styles.btnSave}>
+              <Pressable
+                style={styles.btnSave}
+                onPress={() => {
+                  setWhen(date.toISOString());
+
+                  setOpen(false);
+                }}
+              >
                 <Text style={styles.textStyle}>Save</Text>
               </Pressable>
             </View>

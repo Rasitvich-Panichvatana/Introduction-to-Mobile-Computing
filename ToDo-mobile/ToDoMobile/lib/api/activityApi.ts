@@ -76,7 +76,10 @@ export const createActivity = async (activity: Activity) => {
 };
 
 // UPDATE ACTIVITY
-export const updateActivity = async (id: number, activity: Activity) => {
+export const updateActivity = async (
+  id: number,
+  activity: { name: string; when: string },
+) => {
   const headers = await getHeaders();
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
