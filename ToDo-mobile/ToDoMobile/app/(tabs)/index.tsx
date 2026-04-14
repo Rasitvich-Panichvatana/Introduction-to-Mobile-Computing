@@ -42,6 +42,15 @@ const HomeScreen = () => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      await AsyncStorage.removeItem("token");
+      router.replace("/login");
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+  };
+
   const handleAdd = async (newWhen: string) => {
     try {
       await createActivity({
@@ -97,71 +106,76 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <Pressable style={styles.main} onPress={handleDeselect}>
-      <Text style={styles.title}>Activity Board</Text>
+    <View style={styles.main}>
+      <Pressable style={styles.btnSignOut} onPress={handleSignOut}>
+        <Text style={styles.btnSignOutText}>Sign Out</Text>
+      </Pressable>
+      <Pressable style={styles.body} onPress={handleDeselect}>
+        <Text style={styles.title}>Activity Board</Text>
 
-      <View style={styles.buttonContainer}>
-        <Pressable
-          style={styles.btnAdd}
-          onPress={() => {
-            setName("");
-            setWhen("");
-            setDate(new Date());
-            setIsEditMode(false);
-            setOpen(true);
-          }}
-        >
-          <IconSymbol name="plus" color="white" />
-        </Pressable>
-        <Pressable
-          style={[styles.btnEdit, !selectedCard && styles.btnDisabled]}
-          disabled={!selectedCard}
-          onPress={() => {
-            if (!selectedCard) return;
-            setName(selectedCard.name);
-            setWhen(String(selectedCard.when));
-            setIsEditMode(true);
-            setOpen(true);
-          }}
-        >
-          <IconSymbol name="pencil" color="white" />
-        </Pressable>
-        <Pressable
-          style={[styles.btnRemove, !selectedCard && styles.btnDisabled]}
-          disabled={!selectedCard}
-          onPress={handleDelete}
-        >
-          <IconSymbol name="trash" color="white" />
-        </Pressable>
-      </View>
+        <View style={styles.buttonContainer}>
+          <Pressable
+            style={styles.btnAdd}
+            onPress={() => {
+              setName("");
+              setWhen("");
+              setDate(new Date());
+              setIsEditMode(false);
+              setOpen(true);
+            }}
+          >
+            <IconSymbol name="plus" color="white" />
+          </Pressable>
+          <Pressable
+            style={[styles.btnEdit, !selectedCard && styles.btnDisabled]}
+            disabled={!selectedCard}
+            onPress={() => {
+              if (!selectedCard) return;
+              setName(selectedCard.name);
+              setWhen(String(selectedCard.when));
+              setIsEditMode(true);
+              setOpen(true);
+            }}
+          >
+            <IconSymbol name="pencil" color="white" />
+          </Pressable>
+          <Pressable
+            style={[styles.btnRemove, !selectedCard && styles.btnDisabled]}
+            disabled={!selectedCard}
+            onPress={handleDelete}
+          >
+            <IconSymbol name="trash" color="white" />
+          </Pressable>
+        </View>
 
-      <ModalActivity
-        name={name}
-        setName={setName}
-        when={when}
-        setWhen={setWhen}
-        open={open}
-        setOpen={setOpen}
-        date={date}
-        setDate={setDate}
-        handleSave={isEditMode ? handleEdit : handleAdd}
-      />
+        <ModalActivity
+          name={name}
+          setName={setName}
+          when={when}
+          setWhen={setWhen}
+          open={open}
+          setOpen={setOpen}
+          date={date}
+          setDate={setDate}
+          handleSave={isEditMode ? handleEdit : handleAdd}
+        />
 
-      <ScrollView style={{ flex: 1 }}>
-        {activities.map((activity) => (
-          <ToDoCard
-            key={activity.id}
-            activity={activity}
-            isSelected={selectedCard?.id === activity.id}
-            onSelect={() =>
-              setSelectedCard((prev) =>
-                prev?.id === activity.id ? null : activity,
-              )
-            }
-          />
-        ))}
-      </ScrollView>
-    </Pressable>
+        <ScrollView style={{ flex: 1 }}>
+          {activities.map((activity) => (
+            <ToDoCard
+              key={activity.id}
+              activity={activity}
+              isSelected={selectedCard?.id === activity.id}
+              onSelect={() =>
+                setSelectedCard((prev) =>
+                  prev?.id === activity.id ? null : activity,
+                )
+              }
+            />
+          ))}
+        </ScrollView>
+      </Pressable>
+    </View>
   );
 };
 
@@ -170,39 +184,58 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   main: {
     padding: 16,
-    paddingTop: 64,
+    paddingTop: 56,
+    paddingRight: 16,
     flex: 1,
   },
+  body: {
+    flex: 1,
+  },
+  btnSignOut: {
+    backgroundColor: "white",
+    alignSelf: "flex-end",
+    marginRight: 16,
+    marginBottom: 18,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    borderBottomWidth: 1,
+    borderRadius: 8,
+    borderColor: "white",
+  },
+  btnSignOutText: {
+    textAlign: "center",
+    fontSize: 15,
+  },
   title: {
-    fontSize: 28,
+    fontSize: 36,
     fontWeight: "bold",
     textAlign: "center",
-    marginVertical: 16,
+    marginBottom: 16,
     color: "#222",
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    gap: 12,
+    gap: 10,
     marginBottom: 10,
     marginRight: 16,
   },
   btnAdd: {
     backgroundColor: "#4CAF50",
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
     borderRadius: 8,
   },
   btnEdit: {
     backgroundColor: "#2196F3",
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
     borderRadius: 8,
   },
   btnRemove: {
     backgroundColor: "#f44336",
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
     borderRadius: 8,
   },
   btnDisabled: {
