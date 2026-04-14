@@ -4,8 +4,8 @@ import React from "react";
 const credit = () => {
   return (
     <View style={{ paddingTop: 100, alignItems: "center", gap: 12 }}>
-      <Text style={{ fontSize: 28, fontWeight: "bold" }}>Credit</Text>
-      <Text style={{ fontSize: 18 }}>Rasitvich Panichvatana</Text>
+      <Text style={{ fontSize: 36, fontWeight: "bold" }}>Credit</Text>
+      <Text style={{ fontSize: 20 }}>Rasitvich Panichvatana</Text>
     </View>
   );
 };
